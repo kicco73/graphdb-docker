@@ -12,7 +12,7 @@ push:
 # KMcC;)
 
 build-preload:
-	( cd preload ; docker-compose build --no-cache )
+	( cd preload ; docker-compose build )
 	( cd preload ; docker-compose up -d )
 
 run:

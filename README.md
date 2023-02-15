@@ -11,7 +11,7 @@ Alternatively, to create LexO repository and populate it with data contained in 
 
 $ make build-preload
 
-To finally run graphdb instance:
+To finally run graphdb instance, WAIT UNTIL THE PREVIOUS DOCKER FINISHES ITS JOB, then issue:
 
 $ make run
 
