@@ -1,3 +1,22 @@
+CNR-ILC TLDR:)
+==============
+
+Install Docker and Make on your machine.
+
+To build a clean graphdb image issue the command:
+
+$ make
+
+Alternatively, to create LexO repository and populate it with data contained in preload/import, run:
+
+$ make build-preload
+
+To finally run graphdb instance:
+
+$ make run
+
+-----------------------------
+
 This keeps the infrastructure that builds docker images for [GraphDB](http://graphdb.ontotext.com/)
 
 Check [Docker Hub Images](https://hub.docker.com/r/ontotext/graphdb/) for information on how to use the images.
