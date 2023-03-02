@@ -8,7 +8,7 @@
 @prefix graphdb: <http://www.ontotext.com/config/graphdb#>.
 
 [] a rep:Repository ;
-    rep:repositoryID "LexO" ;
+    rep:repositoryID "${REPOSITORY_ID}" ;
     rdfs:label "" ;
     rep:repositoryImpl [
         rep:repositoryType "graphdb:SailRepository" ;
@@ -18,7 +18,7 @@
             graphdb:read-only "false" ;
 
             # Inference and Validation
-            graphdb:ruleset "owl-horst-optimized" ;
+            graphdb:DATASET "owl-horst-optimized" ;
             graphdb:disable-sameAs "false" ;
             graphdb:check-for-inconsistencies "false" ;
 

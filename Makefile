@@ -13,7 +13,7 @@ push:
 
 build-preload:
 	( cd preload ; docker-compose build )
-	( cd preload ; docker-compose up -d )
+	( cd preload ; docker-compose up )
 
 run:
 	docker-compose up -d

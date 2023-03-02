@@ -1,0 +1,37 @@
+PREFIX inst: <http://www.ontotext.com/connectors/lucene/instance#>
+PREFIX : <http://www.ontotext.com/connectors/lucene#>
+INSERT DATA {
+     inst:etymologyIndex :createConnector '''
+ {
+   "types": [
+     "http://lari-datasets.ilc.cnr.it/lemonEty#Etymology"
+   ],
+   "fields": [
+     {   
+      "fieldName": "label",
+      "propertyChain": [
+        "http://www.w3.org/2000/01/rdf-schema#label"
+      ],
+      "multivalued": false,
+      "analyzed": false
+     },
+    {
+       "fieldName": "etymologyIRI",
+       "propertyChain": [
+         "$self"
+       ],
+	"multivalued": false,
+    "analyzed": false
+    },
+     {   
+      "fieldName": "author",
+      "propertyChain": [
+        "http://purl.org/dc/terms/creator"
+      ],
+      "multivalued": false,
+      "analyzed": false
+     }
+   ]
+ }
+ ''' .
+ } 

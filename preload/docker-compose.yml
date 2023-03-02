@@ -1,3 +1,7 @@
+# This file is used to mount graphdb docker and populate it 
+# first with the files contained in import, and then 
+# by executing the queries contained in queries.
+
 version: "3"
 
 services:
@@ -11,14 +15,14 @@ services:
         version: ${GRAPHDB_VERSION}
 
     # Load all files from ../import in repo defined in ./graphdb-repo-config.ttl
-    #entrypoint: [ "bash", "-c", "/opt/graphdb/dist/bin/importrdf preload --force --recursive -q /tmp -c /opt/graphdb/graphdb-repo-config.ttl /opt/graphdb/ruleset.ttl /opt/graphdb/home/graphdb-import" ]
-    #entrypoint: [ "/opt/graphdb/dist/bin/importrdf", "preload", "--force", "--recursive", "-q", "/tmp", "-c", "/opt/graphdb/graphdb-repo-config.ttl", "/opt/graphdb/home/graphdb-import" ]
-    entrypoint: [ "/opt/graphdb/dist/bin/importrdf", "load", "--force", "-c", "/opt/graphdb/graphdb-repo-config.ttl", "/opt/graphdb/ruleset.ttl", "/opt/graphdb/home/graphdb-import/*" ]
+    
+    entrypoint: [ "/bin/bash", "-c", "/opt/bin/preload.sh" ]
 
     # Preload given file to existing repository (here "demo")
     # entrypoint: [ "/opt/graphdb/dist/bin/preload", "preload", "-f", "-i", "demo", "/root/graphdb-import" ]
 
     environment: 
+      REPOSITORY_ID: ${REPOSITORY_ID}
       GDB_JAVA_OPTS: >-
         -Xmx${GRAPHDB_HEAP_SIZE} -Xms${GRAPHDB_HEAP_SIZE}
         -Dgraphdb.home=/opt/graphdb/home
@@ -30,8 +34,10 @@ services:
         -Dgraphdb.append.request.id.headers=true
         -Dreuse.vars.in.subselects=true
     volumes:
-      # Change folders in the .env file or directly here
+      # Change folders in the .env file
       - ${GRAPHDB_HOME}:/opt/graphdb/home
+      - ${BIN_FOLDER}:/opt/bin
       - ${IMPORT_FOLDER}:/opt/graphdb/home/graphdb-import
-      - ${REPOSITORY_CONFIG_FILE}:/opt/graphdb/graphdb-repo-config.ttl
-      - ${RULESET_FILE}:/opt/graphdb/ruleset.ttl
+      - ${QUERIES_FOLDER}:/opt/graphdb/home/graphdb-queries
+      - ${REPOSITORY_CONFIG_FILE}:/opt/graphdb/repository_template.ttl
+      - ${DATASET_FILE}:/opt/graphdb/DATASET.ttl

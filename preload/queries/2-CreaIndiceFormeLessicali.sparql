@@ -1,0 +1,85 @@
+PREFIX inst: <http://www.ontotext.com/connectors/lucene/instance#>
+PREFIX : <http://www.ontotext.com/connectors/lucene#>
+INSERT DATA {
+     inst:formIndex :createConnector '''
+ {
+   "types": [
+     "http://www.w3.org/ns/lemon/ontolex#Form"
+   ],
+   "fields": [
+     {   
+      "fieldName": "writtenRep",
+      "propertyChain": [
+        "http://www.w3.org/ns/lemon/ontolex#writtenRep"
+      ],
+      "multivalued": false,
+      "analyzed": false
+     },
+     {
+      "fieldName": "phoneticRep",
+      "propertyChain": [
+        "http://www.w3.org/ns/lemon/ontolex#phoneticRep"
+      ],
+      "multivalued": false,
+      "analyzed": false
+     },
+     {
+      "fieldName": "pronunciation",
+      "propertyChain": [
+        "http://www.lexinfo.net/ontology/3.0/lexinfo#pronunciation"
+      ],
+      "multivalued": false,
+      "analyzed": false
+     },
+     {
+      "fieldName": "romanization",
+      "propertyChain": [
+        "http://www.lexinfo.net/ontology/3.0/lexinfo#romanization"
+      ],
+      "multivalued": false,
+      "analyzed": false
+     },
+     {
+      "fieldName": "segmentation",
+      "propertyChain": [
+        "http://www.lexinfo.net/ontology/3.0/lexinfo#segmentation"
+      ],
+      "multivalued": false,
+      "analyzed": false
+     },
+     {
+      "fieldName": "transliteration",
+      "propertyChain": [
+        "http://www.lexinfo.net/ontology/3.0/lexinfo#transliteration"
+      ],
+      "multivalued": false,
+      "analyzed": false
+     },
+    {
+       "fieldName": "formIRI",
+       "propertyChain": [
+         "$self"
+       ],
+	"multivalued": false,
+    "analyzed": false
+    },
+     {   
+      "fieldName": "author",
+      "propertyChain": [
+        "http://purl.org/dc/terms/creator"
+      ],
+      "multivalued": false,
+      "analyzed": false
+     },
+      {
+            "fieldName": "writtenFormLanguage",
+            "propertyChain": [
+            	"http://www.w3.org/2000/01/rdf-schema#label",
+            	"lang()"
+            ],
+            "analyzed": false
+            }
+   ]
+ }
+ ''' .
+ }

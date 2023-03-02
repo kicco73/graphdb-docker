@@ -1,0 +1,30 @@
+PREFIX inst: <http://www.ontotext.com/connectors/lucene/instance#>
+PREFIX : <http://www.ontotext.com/connectors/lucene#>
+INSERT DATA {
+     inst:conceptReferenceIndex :createConnector '''
+ {
+   "types": [
+     "http://www.w3.org/ns/lemon/ontolex#LexicalSense"
+   ],
+   "fields": [
+    {
+       "fieldName": "referencedBy",
+       "propertyChain": [
+        "http://www.w3.org/ns/lemon/ontolex#reference"
+       ],
+    "analyzed": false
+    },
+{
+       "fieldName": "lemma",
+       "propertyChain": [
+        "http://www.w3.org/ns/lemon/ontolex#isSenseOf",
+        "http://www.w3.org/ns/lemon/ontolex#canonicalForm",
+        "http://www.w3.org/ns/lemon/ontolex#writtenRep",
+       ],
+"multivalued": false,
+    "analyzed": false
+    }
+   ]
+ }
+ ''' .
+ }

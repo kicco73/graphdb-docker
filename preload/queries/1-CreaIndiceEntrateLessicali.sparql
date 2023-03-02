@@ -1,0 +1,88 @@
+PREFIX inst: <http://www.ontotext.com/connectors/lucene/instance#>
+PREFIX : <http://www.ontotext.com/connectors/lucene#>
+INSERT DATA {
+     inst:lexicalEntryIndex :createConnector '''
+ {
+   "types": [
+     "http://www.w3.org/ns/lemon/ontolex#LexicalEntry"
+   ],
+   "fields": [
+     {
+       "fieldName": "lexicalEntryLabel",
+       "propertyChain": [
+        "http://www.w3.org/2000/01/rdf-schema#label"
+       ],
+      "multivalued": false,
+      "analyzed": false
+     },
+     {   
+      "fieldName": "writtenOtherForm",
+      "propertyChain": [
+        "http://www.w3.org/ns/lemon/ontolex#otherForm",
+        "http://www.w3.org/ns/lemon/ontolex#writtenRep"
+      ],
+      "analyzed": false
+     },
+     {
+      "fieldName": "writtenCanonicalForm",
+      "propertyChain": [
+        "http://www.w3.org/ns/lemon/ontolex#canonicalForm",
+        "http://www.w3.org/ns/lemon/ontolex#writtenRep"
+      ],
+      "analyzed": false
+     },
+    {
+       "fieldName": "lexicalEntryIRI",
+       "propertyChain": [
+         "$self"
+       ],
+	"multivalued": false,
+    "analyzed": false
+    },
+    {
+         "fieldName": "writtenFormLanguage",
+         "propertyChain": [
+           "http://www.w3.org/2000/01/rdf-schema#label",
+           "lang()"
+         ],
+         "analyzed": false
+     },
+     {
+         "fieldName": "type",
+         "propertyChain": [
+           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+           "http://www.w3.org/2000/01/rdf-schema#label"
+         ],
+         "analyzed": false,
+         "languages": [
+			"en"
+         ]
+     },
+     {
+         "fieldName": "pos",
+         "propertyChain": [
+           "http://www.lexinfo.net/ontology/3.0/lexinfo#partOfSpeech",
+           "http://www.w3.org/2000/01/rdf-schema#label"
+         ],
+         "analyzed": false,
+         "languages": [
+			"en"
+         ]
+     },
+     {
+          "fieldName": "status",
+          "propertyChain": [
+                "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status"
+          ]
+     },
+    {
+          "fieldName": "author",
+          "propertyChain": [
+                "http://purl.org/dc/terms/creator"
+          ]
+     }
+   ],
+   "documentFilter": "bound(?lexicalEntryLabel)"
+ }
+ ''' .
+ }

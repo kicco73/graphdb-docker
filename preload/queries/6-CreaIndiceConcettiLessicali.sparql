@@ -1,0 +1,85 @@
+PREFIX inst: <http://www.ontotext.com/connectors/lucene/instance#>
+            PREFIX : <http://www.ontotext.com/connectors/lucene#>
+            INSERT DATA {
+                 inst:lexicalConceptIndex :createConnector '''
+             {
+               "types": [
+                 "http://www.w3.org/ns/lemon/ontolex#LexicalConcept"
+               ],
+               "fields": [
+                 {
+                   "fieldName": "label",
+                   "propertyChain": [
+                    "http://www.w3.org/2000/01/rdf-schema#label"
+                   ],
+                 "analyzed": false
+                 },
+                 {
+                   "fieldName": "prefLabel",
+                   "propertyChain": [
+                    "http://www.w3.org/2004/02/skos/core#prefLabel"
+                   ],
+                 "analyzed": false
+                 },
+                 {
+                   "fieldName": "altLabel",
+                   "propertyChain": [
+                    "http://www.w3.org/2004/02/skos/core#altLabel"
+                   ],
+                 "analyzed": false
+                 },
+                 {
+                   "fieldName": "hiddenLabel",
+                   "propertyChain": [
+                    "http://www.w3.org/2004/02/skos/core#hiddenLabel"
+                   ],
+                 "analyzed": false
+                 },
+                 {   
+                  "fieldName": "lexicalEntry",
+                  "propertyChain": [
+                    "http://www.w3.org/ns/lemon/ontolex#isEvokedBy"
+                  ],
+                  "analyzed": false
+                 },
+                 {   
+                  "fieldName": "inScheme",
+                  "propertyChain": [
+                    "http://www.w3.org/2004/02/skos/core#inScheme"
+                  ],
+                  "analyzed": false
+                 },
+                 {
+                  "fieldName": "lexicalSense",
+                  "propertyChain": [
+                    "http://www.w3.org/ns/lemon/ontolex#lexicalizedSense"
+                  ],
+                  "analyzed": false
+                 },
+                {
+                   "fieldName": "lexicalConceptIRI",
+                   "propertyChain": [
+                     "$self"
+                   ],
+            	"multivalued": false,
+                "analyzed": false
+                },
+                 {
+                     "fieldName": "definition",
+                     "propertyChain": [
+                       "http://www.w3.org/2004/02/skos/core#definition"
+                     ],
+            	  "multivalued": false,
+                  "analyzed": false
+                 },
+                {
+                      "fieldName": "author",
+                      "propertyChain": [
+                            "http://purl.org/dc/terms/creator"
+                      ],
+                 "analyzed": false
+                 }
+               ]
+             }
+             ''' .
+             }

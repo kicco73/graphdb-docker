@@ -1,0 +1,46 @@
+ dPREFIX inst: <http://www.ontotext.com/connectors/lucene/instance#>
+PREFIX : <http://www.ontotext.com/connectors/lucene#>
+INSERT DATA {
+     inst:componentIndex :createConnector '''
+ {
+   "types": [
+     "http://www.w3.org/ns/lemon/decomp#Component"
+   ],
+   "fields": [
+     {
+       "fieldName": "componentLabel",
+       "propertyChain": [
+        "http://www.w3.org/2000/01/rdf-schema#label"
+       ],
+      "multivalued": false,
+      "analyzed": false
+     },
+     {
+       "fieldName": "ComponentIRI",
+       "propertyChain": [
+         "$self"
+       ],
+	"multivalued": false,
+    "analyzed": false
+    },
+     {
+         "fieldName": "morpho",
+         "propertyChain": [
+           "http://www.lexinfo.net/ontology/3.0/lexinfo#morphosyntacticProperty",
+           "http://www.w3.org/2000/01/rdf-schema#label"
+         ],
+         "analyzed": false,
+         "languages": [
+			"en"
+         ]
+     },
+    {
+          "fieldName": "author",
+          "propertyChain": [
+                "http://purl.org/dc/terms/creator"
+          ]
+     }
+   ]
+ }
+ ''' .
+ }

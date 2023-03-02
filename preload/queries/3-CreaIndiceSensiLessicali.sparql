@@ -1,0 +1,115 @@
+PREFIX inst: <http://www.ontotext.com/connectors/lucene/instance#>
+PREFIX : <http://www.ontotext.com/connectors/lucene#>
+insert data {
+     inst:lexicalSenseIndex :createConnector '''
+ {
+   "types": [
+     "http://www.w3.org/ns/lemon/ontolex#LexicalSense"
+   ],
+   "fields": [
+     {   
+      "fieldName": "definition",
+      "propertyChain": [
+        "http://www.w3.org/2004/02/skos/core#definition"
+      ],
+      "multivalued": false,
+      "analyzed": false
+     },
+{   
+      "fieldName": "description",
+      "propertyChain": [
+        "http://www.lexinfo.net/ontology/3.0/lexinfo#description"
+      ],
+      "multivalued": false,
+      "analyzed": false
+     },
+{   
+      "fieldName": "explanation",
+      "propertyChain": [
+        "http://www.lexinfo.net/ontology/3.0/lexinfo#explanation"
+      ],
+      "multivalued": false,
+      "analyzed": false
+     },
+{   
+      "fieldName": "gloss",
+      "propertyChain": [
+        "http://www.lexinfo.net/ontology/3.0/lexinfo#gloss"
+      ],
+      "multivalued": false,
+      "analyzed": false
+     },
+{   
+      "fieldName": "senseExample",
+      "propertyChain": [
+        "http://www.lexinfo.net/ontology/3.0/lexinfo#senseExample"
+      ],
+      "multivalued": false,
+      "analyzed": false
+     },
+    {   
+      "fieldName": "senseTranslation",
+      "propertyChain": [
+        "http://www.lexinfo.net/ontology/3.0/lexinfo#senseTranslation"
+      ],
+      "multivalued": false,
+      "analyzed": false
+     },
+    {
+       "fieldName": "lexicalSenseIRI",
+       "propertyChain": [
+         "$self"
+       ],
+	"multivalued": false,
+    "analyzed": false
+    },
+{
+  "fieldName": "senseLanguage",
+  "propertyChain": [
+  "http://www.w3.org/ns/lemon/ontolex#isSenseOf",
+  "http://www.w3.org/2000/01/rdf-schema#label"
+  "lang()"
+     ],
+  "analyzed": false
+},
+{
+   "fieldName": "author",
+   "propertyChain": [
+        "http://purl.org/dc/terms/creator"
+     ]
+},
+ {
+    "fieldName": "status",
+    "propertyChain": [
+         "http://www.w3.org/ns/lemon/ontolex#isSenseOf",
+         "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status"
+      ]
+  },
+{
+    "fieldName": "pos",
+    "propertyChain": [
+      "http://www.w3.org/ns/lemon/ontolex#isSenseOf",
+      "http://www.lexinfo.net/ontology/3.0/lexinfo#partOfSpeech",
+      "http://www.w3.org/2000/01/rdf-schema#label"
+    ],
+    "analyzed": false,
+    "languages": [
+        "en"
+    ]
+},
+{
+   "fieldName": "type",
+   "propertyChain": [
+      "http://www.w3.org/ns/lemon/ontolex#isSenseOf",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2000/01/rdf-schema#label"
+     ],
+     "analyzed": false,
+     "languages": [
+		"en"
+     ]
+ }
+   ]
+ }
+ ''' .
+ }
